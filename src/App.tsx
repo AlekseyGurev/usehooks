@@ -1,18 +1,17 @@
-import { useState } from 'react';
-
+import { useLocalStorage } from './hooks/useLocalStorage';
 import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [token, { setItem, removeItem }] = useLocalStorage('token');
 
   return (
-    <>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+    <div>
+      <p>Твой токен: {token}</p>
+      <div>
+        <button onClick={() => setItem('new-token')}>Задать токен</button>
+        <button onClick={() => removeItem()}>Удалить токен</button>
       </div>
-    </>
+    </div>
   );
 }
 
