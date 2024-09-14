@@ -1,16 +1,13 @@
-import { useState } from 'react';
-
 import './App.css';
+import { useViewportSize } from './hooks/useViewportSize';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const { height, width } = useViewportSize();
 
   return (
     <>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+        Width: {width}, height: {height}
       </div>
     </>
   );
